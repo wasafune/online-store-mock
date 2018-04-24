@@ -1,0 +1,69 @@
+{
+  "name": "online-store-mock",
+  "version": "1.0.0",
+  "description": "Online Store Mock",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -r dotenv/config server.js",
+    "build": "webpack --watch --config webpack.config.js",
+    "server": "webpack-dev-server --inline --hot",
+    "test": "jest",
+    "coverage": "jest --coverage",
+    "scraper": "nodemon -r dotenv/config ./scraper/server.js",
+    "updater": "node ./scraper/autoUpdate.js",
+    "alttitle": "node -r dotenv/config ./scraper/updateAltTitle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wasafune/online-store-mock.git"
+  },
+  "author": "Peter Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wasafune/online-store-mock/issues"
+  },
+  "homepage": "https://github.com/wasafune/online-store-mock#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "mongodb": "^3.0.5",
+    "mongoose": "^5.0.16",
+    "node-sass": "^4.8.3",
+    "nodemon": "^1.17.3",
+    "path": "^0.12.7",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.7.2",
+    "redux-form": "^7.3.0",
+    "redux-saga": "^0.16.0",
+    "regenerator-transform": "^0.12.3",
+    "request": "^2.85.0",
+    "sass-loader": "^7.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "regenerator-runtime": "^0.11.1",
+    "style-loader": "^0.20.3",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.3"
+  }
+}
