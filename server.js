@@ -2,6 +2,8 @@ const express = require('express')
 const path = require('path')
 const bp = require('body-parser')
 
+const { searchController } = require('./controllers')
+
 const PORT = process.env.PORT || 3000
 const app = express()
 
@@ -11,6 +13,9 @@ app.use(bp.urlencoded({ extended: true }))
 
 // Serve static files
 app.use(express.static(path.join(__dirname, 'dist')))
+
+// post route middleware
+app.use('/search', searchController)
 
 // Base route
 app.get('/*', (req, res) => {

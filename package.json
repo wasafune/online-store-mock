@@ -7,11 +7,7 @@
     "start": "nodemon -r dotenv/config server.js",
     "build": "webpack --watch --config webpack.config.js",
     "server": "webpack-dev-server --inline --hot",
-    "test": "jest",
-    "coverage": "jest --coverage",
-    "scraper": "nodemon -r dotenv/config ./scraper/server.js",
-    "updater": "node ./scraper/autoUpdate.js",
-    "alttitle": "node -r dotenv/config ./scraper/updateAltTitle.js"
+    "populatedb": "node -r dotenv/config ./mongo/populateDb"
   },
   "repository": {
     "type": "git",
