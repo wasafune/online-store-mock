@@ -1,9 +1,10 @@
 import { all } from 'redux-saga/effects'
 
-// Actions
+// Watchers
+import watchSearch from './search'
 
 export default function* rootSaga() {
   yield all([
-    //
+    watchSearch(),
   ])
 }
