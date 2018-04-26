@@ -2,10 +2,11 @@
   "name": "online-store-mock",
   "version": "1.0.0",
   "description": "Online Store Mock",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon -r dotenv/config server.js",
     "build": "webpack --watch --config webpack.config.js",
+    "heroku-postbuild": "webpack --config webpack.config.js",
     "server": "webpack-dev-server --inline --hot",
     "populatedb": "node -r dotenv/config ./mongo/populateDb"
   },
