@@ -25,7 +25,7 @@ class SearchBar extends Component {
     const { state } = this
     const { searchStr } = state
     return (
-      <div id="search-container">
+      <div className="search-container">
         <input
           className="input-search"
           type="text"
@@ -47,7 +47,6 @@ class SearchBar extends Component {
 
 SearchBar.propTypes = {
   searchSearched: PropTypes.func.isRequired,
-  searchFiltered: PropTypes.func.isRequired,
 }
 
 export default SearchBar

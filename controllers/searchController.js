@@ -15,6 +15,7 @@ router.get('/all', async (req, res) => {
   const db = mongoose.connection
   const queryRes = await queryAll()
   await db.close()
+  console.log(queryRes)
   res.send(queryRes)
 })
 
@@ -24,12 +25,17 @@ router.post('/searched', async (req, res) => {
   const db = mongoose.connection
   const queryRes = await querySearched(searchStr, categories)
   await db.close()
+  console.log(queryRes)
   res.send(queryRes)
 })
 
 router.post('/filtered', async (req, res) => {
   const { categories } = req.body
+  await mongoose.connect(DB_HOST)
+  const db = mongoose.connection
   const queryRes = await queryFiltered(categories)
+  await db.close()
+  console.log(queryRes)
   res.send(queryRes)
 })
 

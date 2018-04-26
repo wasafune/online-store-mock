@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import {
-  searchSearched,
-  searchFiltered,
-} from '../../../actions'
+import './Nav.scss'
+
+import { searchSearched } from '../../../actions'
 import SearchBar from './SearchBar'
 
 class Nav extends Component {
@@ -17,10 +16,10 @@ class Nav extends Component {
         <Link href="/" to="/">
           Cool Store
         </Link>
-        <div>
+        <div className="nav-right-container">
           <SearchBar
             searchSearched={this.props.searchSearched}
-            searchFiltered={this.props.searchFiltered}
+            searching={this.props.searching}
           />
           Account
         </div>
@@ -36,14 +35,13 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
     searchSearched,
-    searchFiltered,
   },
   dispatch,
 )
 
 Nav.propTypes = {
   searchSearched: PropTypes.func.isRequired,
-  searchFiltered: PropTypes.func.isRequired,
+  searching: PropTypes.bool.isRequired,
 }
 
 

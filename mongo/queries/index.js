@@ -19,7 +19,7 @@ const querySearched = (searchStr, categories) => {
 const queryFiltered = categories => Item
   .find()
   .where('categories')
-  .all({ categories })
+  .all(categories)
   .lean()
 
 module.exports = {

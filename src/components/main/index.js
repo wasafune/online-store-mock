@@ -1,2 +1,6 @@
 export { default as Welcome } from './Welcome'
 export { default as Nav } from './Nav'
+export { default as ProductsNav } from './ProductsNav'
+export { default as Products } from './Products'
+export { default as Item } from './Item'
+export { default as Cart } from './Cart'

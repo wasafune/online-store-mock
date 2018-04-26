@@ -1,19 +1,26 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import { Nav, Welcome } from '../components/main'
+import {
+  Nav, ProductsNav, Welcome,
+  Products, Item, Cart,
+} from '../components/main'
+import './MainLayout.scss'
 
 class MainLayout extends Component {
   render() {
     return (
-      <div>
+      <div id="main">
         <Nav />
-        <h1>MainLayout</h1>
+        <ProductsNav />
         <Switch>
           <Route exact path="/" component={Welcome} />
-          {/* <Route exact path="/" component={MainLayout} /> */}
+          <Route exact path="/products" component={Products} />
+          <Route exact path="/products/food" component={Products} />
+          <Route exact path="/products/clothing" component={Products} />
+          <Route path="/products" component={Item} />
+          <Route path="/cart" component={Cart} />
         </Switch>
-
       </div>
     )
   }

@@ -15,25 +15,25 @@ const search = (state = initialState, action) => {
       return {
         ...state,
         searching: true,
-      };
+      }
     case SEARCH_SEARCHED:
     case SEARCH_FILTERED:
       return {
         ...state,
         searching: true,
-      };
+      }
     case SEARCH_SUCCESS:
       return {
         ...state,
         searchArr: [...action.searchArr],
         searching: false,
-      };
+      }
 
     case SEARCH_FAIL:
       return {
         ...state,
         searching: false,
-      };
+      }
 
     default:
       return state
