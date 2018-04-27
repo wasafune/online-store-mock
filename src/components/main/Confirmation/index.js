@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import { unmountCart } from '../../../actions'
 
 class Confirmation extends Component {
+  componentWillUnmount() {
+    this.props.unmountCart();
+  }
+
   render() {
     const { cart } = this.props
     return (
@@ -16,8 +24,24 @@ class Confirmation extends Component {
   }
 }
 
+Confirmation.propTypes = {
+  unmountCart: PropTypes.func.isRequired,
+}
+
+
 const mapStateToProps = state => ({
   cart: state.cart,
 });
 
-export default connect(mapStateToProps)(Confirmation)
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {
+    unmountCart,
+  },
+  dispatch,
+)
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Confirmation)

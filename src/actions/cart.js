@@ -5,6 +5,7 @@ import {
   ASSIGN_SHIPPING,
   REQ_CHECKOUT,
   UNMOUNT_CHECKOUT,
+  UNMOUNT_CART,
 } from '../constants'
 
 // Async
@@ -37,4 +38,8 @@ export const reqCheckout = checkoutObj => ({
 
 export const unmountCheckout = () => ({
   type: UNMOUNT_CHECKOUT,
+})
+
+export const unmountCart = () => ({
+  type: UNMOUNT_CART,
 })

@@ -2,7 +2,7 @@ import cloneDeep from 'lodash/cloneDeep'
 
 import {
   ADD_TO_CART, REMOVE_FROM_CART, QUANTITY_CHANGE_CART, ASSIGN_SHIPPING,
-  REQ_CHECKOUT, CHECKOUT_SUCCESS, CHECKOUT_FAIL, UNMOUNT_CHECKOUT,
+  REQ_CHECKOUT, CHECKOUT_SUCCESS, CHECKOUT_FAIL, UNMOUNT_CHECKOUT, UNMOUNT_CART,
 } from '../constants'
 
 const initialState = {
@@ -87,6 +87,10 @@ const cart = (state = initialState, action) => {
       return {
         ...state,
         error: false,
+      }
+    case UNMOUNT_CART:
+      return {
+        ...initialState,
       }
     default:
       return state
