@@ -5,7 +5,7 @@ import {
   searchAll,
   searchSearched,
   searchFiltered,
-} from '../apis/search'
+} from '../apis'
 
 // Constants
 import {

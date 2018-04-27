@@ -2,6 +2,7 @@ import {
   ITEM_CLICK,
   QUANTITY_CHANGE,
   CLEAR_ITEM,
+  REQ_ITEM,
 } from '../constants'
 
 // Async
@@ -17,4 +18,9 @@ export const quantityChange = num => ({
 
 export const clearItem = () => ({
   type: CLEAR_ITEM,
+})
+
+export const reqItem = itemname => ({
+  type: REQ_ITEM,
+  itemname,
 })

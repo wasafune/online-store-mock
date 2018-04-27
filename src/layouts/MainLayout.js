@@ -1,29 +1,32 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import {
-  Nav, ProductsNav, Welcome,
-  Products, Item, Cart,
+  ProductsNav, Welcome, Products,
+  Item, Cart, Checkout,
+  Shipping, Confirmation,
 } from '../components/main'
-import './MainLayout.scss'
+import Nav from '../components/Nav'
 
-class MainLayout extends Component {
-  render() {
-    return (
-      <div id="main">
-        <Nav />
-        <ProductsNav />
-        <Switch>
-          <Route exact path="/" component={Welcome} />
-          <Route exact path="/products" component={Products} />
-          <Route exact path="/products/food" component={Products} />
-          <Route exact path="/products/clothing" component={Products} />
-          <Route path="/products" component={Item} />
-          <Route path="/cart" component={Cart} />
-        </Switch>
-      </div>
-    )
-  }
+const MainLayout = () => {
+  return (
+    <div className="main">
+      <Nav />
+      <ProductsNav />
+      <Switch>
+        <Route exact path="/" component={Welcome} />
+        <Route exact path="/products" component={Products} />
+        <Route exact path="/products/fruit" component={Products} />
+        <Route exact path="/products/vegetable" component={Products} />
+        <Route exact path="/products/dessert" component={Products} />
+        <Route path="/products" component={Item} />
+        <Route path="/cart" component={Cart} />
+        <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/checkout/shipping" component={Shipping} />
+        <Route exact path="/checkout/confirmation" component={Confirmation} />
+      </Switch>
+    </div>
+  )
 }
 
 

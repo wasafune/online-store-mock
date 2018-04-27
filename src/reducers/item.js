@@ -1,9 +1,14 @@
-import { ITEM_CLICK, QUANTITY_CHANGE, CLEAR_ITEM } from '../constants'
+import {
+  ITEM_CLICK, QUANTITY_CHANGE, CLEAR_ITEM,
+  REQ_ITEM_SUCCESS, REQ_ITEM_FAIL,
+} from '../constants'
 
 const initialState = {
-  _id: '',
   itemname: '',
+  _id: '',
   price: 0,
+  type: '',
+  variants: [],
   quantity: 0,
 }
 
@@ -13,6 +18,8 @@ const item = (state = initialState, action) => {
       return {
         ...state,
         ...action.itemObj,
+        quantity: 0,
+        variants: [...action.itemObj.variants],
       }
     case QUANTITY_CHANGE:
       return {
@@ -23,6 +30,15 @@ const item = (state = initialState, action) => {
       return {
         ...initialState,
       }
+    case REQ_ITEM_SUCCESS: {
+      return {
+        ...state,
+        itemname: action.itemObj.itemname,
+        ...action.itemObj.variants[0],
+        variants: [...action.itemObj.variants],
+      }
+    }
+    case REQ_ITEM_FAIL:
     default:
       return state
   }

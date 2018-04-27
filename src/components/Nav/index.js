@@ -4,24 +4,36 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import './Nav.scss'
-
-import { searchSearched } from '../../../actions'
+import { searchSearched, unmountAuth } from '../../actions'
 import SearchBar from './SearchBar'
 
+
 class Nav extends Component {
+  constructor() {
+    super()
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick() {
+    if (this.props.auth.userObj) this.props.unmountAuth()
+  }
+
   render() {
+    const { props, handleClick } = this
+    const { search, auth } = props
     return (
       <div className="nav">
-        <Link href="/" to="/">
+        <Link className="main-link" href="/" to="/">
           Cool Store
         </Link>
         <div className="nav-right-container">
           <SearchBar
-            searchSearched={this.props.searchSearched}
-            searching={this.props.searching}
+            searchSearched={props.searchSearched}
+            searching={search.searching}
           />
-          Account
+          <Link href="/auth" to="/auth" onClick={handleClick}>
+            {auth.userObj ? 'Logout' : 'Login'}
+          </Link>
         </div>
       </div>
     )
@@ -30,18 +42,19 @@ class Nav extends Component {
 
 const mapStateToProps = state => ({
   search: state.search,
+  auth: state.auth,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
     searchSearched,
+    unmountAuth,
   },
   dispatch,
 )
 
 Nav.propTypes = {
-  searchSearched: PropTypes.func.isRequired,
-  searching: PropTypes.bool.isRequired,
+  unmountAuth: PropTypes.func.isRequired,
 }
 
 

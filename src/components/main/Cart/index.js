@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import CartItem from './CartItem'
-// import './Cart.scss'
 
-import { quantityChange, addToCart } from '../../../actions'
+import { quantityChangeCart, removeFromCart, assignShipping } from '../../../actions'
 
 class Cart extends Component {
   constructor() {
@@ -14,24 +14,44 @@ class Cart extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick(event) {
-    const { name } = event.target
-    if (name === 'inc') this.props.quantityChange(1)
-    if (this.props.item.quantity) {
-      if (name === 'dec') this.props.quantityChange(-1)
-      if (name === 'item-to-cart') {
-        this.props.addToCart({ ...this.props.item })
+  handleClick(e) {
+    const { name, value } = e.target
+    const { props } = this
+    if (!name.length) {
+      const { cart, auth } = props
+      if (!cart.total) {
+        e.preventDefault()
+        return
+      }
+      if (auth.userObj) {
+        const { userObj } = auth
+        const shippingObj = {
+          fullname: userObj.fullname,
+          ...userObj.shipping,
+        }
+        this.props.assignShipping(shippingObj)
+        return
+      }
+      return
+    }
+    if (name === 'inc') this.props.quantityChangeCart(value, 1)
+    if (props.cart.itemList[value].quantity) {
+      if (name === 'dec') this.props.quantityChangeCart(value, -1)
+      if (name === 'remove') {
+        props.removeFromCart(value)
       }
     }
   }
 
   render() {
     const { handleClick, props } = this
+    const checkoutPath = props.auth.userObj ? '/checkout' : '/checkout/shipping'
     const itemsArr = Object.values(props.cart.itemList).map((obj) => {
       return (
         <CartItem
           _id={obj._id}
           itemname={obj.itemname}
+          type={obj.type}
           price={obj.price}
           quantity={obj.quantity}
           handleClick={handleClick}
@@ -45,8 +65,14 @@ class Cart extends Component {
           {itemsArr}
         </div>
         <div className="cart-item-checkout-container">
-          Total:{props.cart.total}
-          <button onClick={handleClick}>Checkout</button>
+          Total:${(props.cart.total / 100).toFixed(2)}
+          <Link
+            href={checkoutPath}
+            to={checkoutPath}
+            onClick={handleClick}
+          >
+            <button>Checkout</button>
+          </Link>
         </div>
       </div>
     )
@@ -55,19 +81,21 @@ class Cart extends Component {
 
 const mapStateToProps = state => ({
   cart: state.cart,
+  auth: state.auth,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
-    quantityChange,
-    addToCart,
+    quantityChangeCart,
+    removeFromCart,
+    assignShipping,
   },
   dispatch,
 )
 
 Cart.propTypes = {
-  quantityChange: PropTypes.func.isRequired,
-  addToCart: PropTypes.func.isRequired,
+  quantityChangeCart: PropTypes.func.isRequired,
+  assignShipping: PropTypes.func.isRequired,
 }
 
 

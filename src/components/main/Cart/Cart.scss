@@ -1,0 +1,26 @@
+.cart-container {
+  width: 100%;
+  margin: 10px 0 0 0;
+  background-color: pink;
+}
+
+.cart-item-container {
+  width: 100%;
+}
+
+.cart-item {
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 10px;
+  width: 60%;
+  background-color: $light-orange;
+  border-style: solid;
+  border-width: thin;
+  border-color: $dark-brown;
+  border-radius: 10px;
+}
+
+.cart-item-button-container {
+  flex-direction: row;
+}

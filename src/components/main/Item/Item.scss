@@ -1,0 +1,27 @@
+.item-container {
+  background-color: $light-orange;
+  margin: 15px 0 0 0;
+  padding: 30px;
+  width: 70%;
+  border-style: solid;
+  border-width: thin;
+  border-color: $dark-brown;
+  border-radius: 18px;
+}
+
+.item-quantity-container {
+  flex-direction: row;
+  margin: 0 0 0px 0;
+}
+
+.item-title {
+  margin: 0 0 10px 0;
+}
+
+.item-price {
+  margin: 5px 0 5px 0;
+}
+
+.item-quantity {
+  margin: 0 4px 0 4px;
+}

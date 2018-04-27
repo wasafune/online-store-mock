@@ -1,3 +1,6 @@
 export const ITEM_CLICK = 'ITEM_CLICK'
 export const QUANTITY_CHANGE = 'QUANTITY_CHANGE'
 export const CLEAR_ITEM = 'CLEAR_ITEM'
+export const REQ_ITEM = 'REQ_ITEM'
+export const REQ_ITEM_SUCCESS = 'REQ_ITEM_SUCCESS'
+export const REQ_ITEM_FAIL = 'REQ_ITEM_FAIL'

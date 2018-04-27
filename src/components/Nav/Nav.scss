@@ -1,8 +1,15 @@
 .nav {
   width: 100%;
+  background-color: $tan-brown;
+  border-bottom: thin solid $dark-brown;
 }
 
 .nav, .nav-right-container, .search-container {
   flex-direction: row;
   justify-content: space-between;
+  padding: 5px 10px
+}
+
+.main-link {
+  padding: 0 0 0 10px
 }

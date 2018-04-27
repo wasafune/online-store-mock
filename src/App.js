@@ -2,16 +2,16 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import MainLayout from './layouts/MainLayout'
-import './App.scss'
+import AuthLayout from './layouts/AuthLayout'
+import './stylesheets/main.scss'
 
-class App extends React.Component {
-  render() {
-    return (
-      <Switch>
-        <Route path="/" component={MainLayout} />
-      </Switch>
-    )
-  }
+const App = () => {
+  return (
+    <Switch>
+      <Route path="/auth" component={AuthLayout} />
+      <Route path="/" component={MainLayout} />
+    </Switch>
+  )
 }
 
 export default App

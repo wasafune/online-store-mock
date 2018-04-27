@@ -5,32 +5,40 @@ import { Link } from 'react-router-dom';
 const ItemBox = (props) => {
   const currPath = `/products/${props.itemname}`.split(' ').join('_')
   const itemObj = {
-    _id: props._id,
     itemname: props.itemname,
-    price: props.price,
+    _id: props.variants[0]._id,
+    price: props.variants[0].price,
+    type: props.variants[0].type,
+    variants: props.variants,
   }
   return (
     <div className="item-box">
       <Link
+        className="item-box-link-container"
         href={currPath}
         to={currPath}
-        name="item-box"
-        onClick={(e) => {
-          props.handleClick(e, itemObj)
-        }}
+        onClick={e => props.handleClick(e, itemObj)}
       >
+        <img
+          className="item-img"
+          src="https://cdn3.iconfinder.com/data/icons/food-set-3/91/Food_C240-128.png"
+          alt="item-pic"
+        />
         {props.itemname}
-        <br />
-        {props.price}
       </Link>
     </div>
   )
 }
 
+const variantShape = {
+  type: PropTypes.string,
+  price: PropTypes.number,
+}
+
 ItemBox.propTypes = {
   _id: PropTypes.string.isRequired,
   itemname: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  variants: PropTypes.arrayOf(PropTypes.shape(variantShape)).isRequired,
   handleClick: PropTypes.func.isRequired,
 }
 

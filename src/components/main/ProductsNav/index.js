@@ -15,47 +15,71 @@ class ProductsNav extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleClick(e) {
-    const { name } = e.target
-    if (name === 'all') this.props.searchAll()
-    if (name === 'food' || name === 'clothing') {
-      this.props.searchFiltered([name])
+  handleClick(e, type) {
+    if (this.props.search.searching) {
+      e.preventDefault()
+      return
+    }
+    if (!e.metaKey) {
+      if (type === 'all') {
+        this.props.searchAll()
+      } else {
+        this.props.searchFiltered([type])
+      }
     }
   }
 
   render() {
     const { handleClick } = this
     return (
-      <div className="products-nav">
+      <div className="products-nav-container">
         <Link
           href="/products"
           to="/products"
           name="all"
-          onClick={handleClick}
+          onClick={e => handleClick(e, 'all')}
         >
-          Browse All
+          <div className="products-nav-link products-nav-link-odd">
+            All
+          </div>
         </Link>
         <Link
-          href="/products/food"
-          to="/products/food"
-          name="food"
-          onClick={handleClick}
+          href="/products/vegetable"
+          to="/products/vegetable"
+          name="vegetable"
+          onClick={e => handleClick(e, 'vegetable')}
         >
-          Browse Food
+          <div className="products-nav-link products-nav-link-even">
+            Vegetables
+          </div>
         </Link>
         <Link
-          href="/products/clothing"
-          to="/products/clothing"
-          name="clothing"
-          onClick={handleClick}
+          href="/products/fruit"
+          to="/products/fruit"
+          name="fruit"
+          onClick={e => handleClick(e, 'fruit')}
         >
-          Browse Clothing
+          <div className="products-nav-link products-nav-link-odd">
+            Fruits
+          </div>
+        </Link>
+        <Link
+          href="/products/dessert"
+          to="/products/dessert"
+          name="dessert"
+          onClick={e => handleClick(e, 'dessert')}
+        >
+          <div className="products-nav-link products-nav-link-even">
+            Desserts
+          </div>
         </Link>
         <Link
           href="/cart"
           to="/cart"
         >
-          Cart
+          <div className="products-nav-link products-nav-link-cart">
+            Cart
+          </div>
         </Link>
       </div>
     )

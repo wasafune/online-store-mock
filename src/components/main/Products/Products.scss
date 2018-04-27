@@ -1,0 +1,26 @@
+.item-box-container {
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.item-box {
+  background-color: $light-green;
+  margin: 6px 10px 6px 10px;
+  border-style: solid;
+  border-width: thin;
+  border-color: $dark-brown;
+  border-radius: 10px;
+  width: 220px;
+  height: 240px;
+}
+
+.item-box-link-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-img {
+  margin: 0 0 12px 0;
+}

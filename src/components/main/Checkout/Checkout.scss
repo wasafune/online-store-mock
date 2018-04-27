@@ -1,0 +1,17 @@
+.checkout-item-container, .checkout-shipping-info {
+  flex-direction: row;
+  background-color: $light-orange;
+  border-style: solid;
+  border-width: thin;
+  border-color: $dark-brown;
+  border-radius: 7px;
+  margin: 5px 5px;
+}
+
+.checkout-shipping-info {
+  flex-direction: column;
+  padding: 8px;
+}
+.checkout-item {
+  padding: 5px 5px;
+}
