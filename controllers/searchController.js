@@ -1,42 +1,56 @@
 const { Router } = require('express')
-const mongoose = require('mongoose')
 
 const {
   queryAll,
   querySearched,
   queryFiltered,
-} = require('../mongo/queries')
+  queryItem,
+} = require('../dbs/queries')
 
 const router = new Router()
-const { DB_HOST } = process.env
 
 router.get('/all', async (req, res) => {
-  await mongoose.connect(DB_HOST)
-  const db = mongoose.connection
-  const queryRes = await queryAll()
-  await db.close()
-  console.log(queryRes)
-  res.send(queryRes)
+  try {
+    const queryRes = await queryAll()
+    res.send(queryRes)
+  } catch (err) {
+    console.error(err)
+    res.status(err.statusCode || 400).send({ error: 'Something went wrong :(' })
+  }
 })
 
 router.post('/searched', async (req, res) => {
-  const { searchStr, categories } = req.body
-  await mongoose.connect(DB_HOST)
-  const db = mongoose.connection
-  const queryRes = await querySearched(searchStr, categories)
-  await db.close()
-  console.log(queryRes)
-  res.send(queryRes)
+  try {
+    const { searchStr, categories } = req.body
+    const queryRes = await querySearched(searchStr, categories)
+    res.send(queryRes)
+  } catch (err) {
+    console.error(err)
+    res.status(err.statusCode || 400).send({ error: 'Something went wrong :(' })
+  }
 })
 
 router.post('/filtered', async (req, res) => {
-  const { categories } = req.body
-  await mongoose.connect(DB_HOST)
-  const db = mongoose.connection
-  const queryRes = await queryFiltered(categories)
-  await db.close()
-  console.log(queryRes)
-  res.send(queryRes)
+  try {
+    const { categories } = req.body
+    const queryRes = await queryFiltered(categories)
+    res.send(queryRes)
+  } catch (err) {
+    console.error(err)
+    res.status(err.statusCode || 400).send({ error: 'Something went wrong :(' })
+  }
 })
+
+router.post('/item', async (req, res) => {
+  try {
+    const { itemname } = req.body
+    const queryRes = await queryItem(itemname)
+    res.send(queryRes)
+  } catch (err) {
+    console.error(err)
+    res.status(err.statusCode || 400).send({ error: 'Something went wrong :(' })
+  }
+})
+
 
 module.exports = router

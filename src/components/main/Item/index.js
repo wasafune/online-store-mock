@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { quantityChange, addToCart, clearItem, itemClick, reqItem } from '../../../actions'
-// import './Item.scss'
 
 class Item extends Component {
   constructor() {

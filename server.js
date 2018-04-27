@@ -1,11 +1,14 @@
 const express = require('express')
 const path = require('path')
 const bp = require('body-parser')
+const mongoose = require('mongoose')
 
-const { searchController } = require('./controllers')
+
+const { searchController, checkoutController, authController } = require('./controllers')
 
 const PORT = process.env.PORT || 3000
 const app = express()
+mongoose.connect(process.env.DB_HOST)
 
 app.use(bp.json())
 
@@ -16,6 +19,8 @@ app.use(express.static(path.join(__dirname, 'dist')))
 
 // post route middleware
 app.use('/search', searchController)
+app.use('/checkout', checkoutController)
+app.use('/auth', authController)
 
 // Base route
 app.get('/*', (req, res) => {

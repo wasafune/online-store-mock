@@ -8,7 +8,8 @@
     "build": "webpack --watch --config webpack.config.js",
     "heroku-postbuild": "webpack --config webpack.config.js",
     "server": "webpack-dev-server --inline --hot",
-    "populatedb": "node -r dotenv/config ./mongo/populateDb"
+    "populatedb": "node -r dotenv/config ./dbs/populateDb",
+    "populatestripe": "node -r dotenv/config ./dbs/populateStripe"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "formik": "^0.11.11",
     "immutable": "^3.8.2",
     "lodash": "^4.17.10",
     "mongodb": "^3.0.5",
@@ -43,7 +45,8 @@
     "redux-saga": "^0.16.0",
     "regenerator-transform": "^0.12.3",
     "request": "^2.85.0",
-    "sass-loader": "^7.0.1"
+    "sass-loader": "^7.0.1",
+    "stripe": "^5.8.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

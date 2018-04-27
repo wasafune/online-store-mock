@@ -7,7 +7,6 @@ import { bindActionCreators } from 'redux'
 import { searchSearched, unmountAuth } from '../../actions'
 import SearchBar from './SearchBar'
 
-
 class Nav extends Component {
   constructor() {
     super()

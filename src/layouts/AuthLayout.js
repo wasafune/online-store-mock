@@ -3,7 +3,6 @@ import { Switch, Route } from 'react-router-dom'
 
 import { Signup, Login } from '../components/auth'
 import Nav from '../components/Nav'
-// import './MainLayout.scss'
 
 const AuthLayout = () => {
   return (

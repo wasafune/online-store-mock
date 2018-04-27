@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import CheckoutItem from './CheckoutItem'
-// import './Cart.scss'
 
 import { reqCheckout, unmountCheckout } from '../../../actions'
 
